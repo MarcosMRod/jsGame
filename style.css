@@ -17,7 +17,7 @@ body {
   max-width: 900px;
   min-width: 900px;
   font-family: Arial, Helvetica, sans-serif;
-  background: rgb(255, 220, 104);
+  background: rgba(255, 220, 104, 0.116);
   border-bottom: solid 3px black;
   display: flex;
   flex-direction: column;
@@ -30,6 +30,7 @@ body {
 }
 .screen {
   display: flex;
+  position: relative;
   align-self: center;
   margin: 2em auto;
   color: white;
@@ -42,7 +43,20 @@ body {
   justify-content: space-around;
   border-radius: 20px;
   overflow: hidden;
+}
+.screen:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
   background-image: url("./img/sky.jpg");
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
 }
 
 .controllers {
@@ -152,6 +166,50 @@ body {
 
 .imagenPlayer {
   width: 80px;
+}
+#firma {
+  font-size: large;
+  font-weight: bold;
+  font-family: monospace;
+  transform: skew(-25deg);
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 4em;
+  margin-left: 4em;
+  border: 10px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(
+    to right,
+    transparent,
+    rgba(51, 51, 51, 0.11)
+  );
+  border-width: 5px;
+  padding: 20px 5px;
+}
+#firma > a {
+  color: rgba(66, 66, 66, 0.349);
+  text-decoration: none;
+}
+#firma > a:hover {
+  font-size: 1.05em;
+}
+#firma > a:hover ::after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 20px;
+  right: 0;
+  height: 20px;
+  width: 150px;
+  animation: subrayado 3s infinite;
+  border-bottom: 1px solid rgb(0, 70, 128);
+}
+@keyframes subrayado {
+  50% {
+    border-bottom: 1px solid transparent;
+    width: 0px;
+    transform: rotate(360deg);
+  }
 }
 @keyframes ataqueSube {
   0% {
