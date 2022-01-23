@@ -1,9 +1,10 @@
+const gebi = (x) => document.getElementById(x);
 class Player {
   constructor() {
     this.id = "player";
-    this.node = document.getElementById(this.id);
+    this.node = gebi(this.id);
     this.position = [0, 0];
-    this.velocity = 80;
+    this.velocity = 200;
     this.keyUp = "";
   }
 
@@ -59,23 +60,23 @@ document.addEventListener(
   (e) => {
     if (down) return;
     down = true;
-    document.getElementById(e.key).focus();
-    if (document.getElementById("w") === document.activeElement) {
+    gebi(e.key).focus();
+    if (gebi("w") === document.activeElement) {
       Bird.up();
     }
-    if (document.getElementById("s") === document.activeElement) {
+    if (gebi("s") === document.activeElement) {
       Bird.down();
     }
-    if (document.getElementById("a") === document.activeElement) {
+    if (gebi("a") === document.activeElement) {
       Bird.left();
     }
-    if (document.getElementById("d") === document.activeElement) {
+    if (gebi("d") === document.activeElement) {
       Bird.right();
     }
-    if (document.getElementById("i") === document.activeElement) {
+    if (gebi("i") === document.activeElement) {
       Bird.defend();
     }
-    if (document.getElementById("l") === document.activeElement) {
+    if (gebi("l") === document.activeElement) {
       Bird.attack();
     }
   },
