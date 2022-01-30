@@ -142,6 +142,9 @@ body {
   transition-duration: 1s;
   z-index: 1;
   padding: -200px;
+  transform: rotate(0);
+  top: 0;
+  left: 0;
 }
 .atacando::after {
   content: "";
@@ -204,6 +207,7 @@ body {
   animation: subrayado 3s infinite;
   border-bottom: 1px solid rgb(0, 70, 128);
 }
+
 @keyframes subrayado {
   50% {
     border-bottom: 1px solid transparent;

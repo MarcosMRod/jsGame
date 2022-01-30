@@ -1,0 +1,27 @@
+{
+  "name": "csstrying",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./js/index.mjs",
+  "dependencies": {
+    "nvm": "^0.0.4",
+    "remove": "^0.1.5",
+    "rm": "^0.1.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcosMRod/jsGame.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarcosMRod/jsGame/issues"
+  },
+  "homepage": "https://github.com/MarcosMRod/jsGame#readme"
+}

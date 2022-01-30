@@ -1,91 +1,46 @@
-const gebi = (x) => document.getElementById(x);
 class Player {
   constructor() {
-    this.id = "player";
-    this.node = gebi(this.id);
+    this.player = $("#player");
     this.position = [0, 0];
-    this.velocity = 200;
-    this.keyUp = "";
+    this.v = 80;
+  }
+  refreshPosition() {
+    this.player.css({
+      left: this.position[0],
+      top: this.position[1],
+    });
+  }
+  move(x, y) {
+    this.position[0] += x * this.v;
+    this.position[1] += y * this.v;
+    this.refreshPosition();
   }
 
   up() {
-    if (this.position[0] > -300) {
-      this.position[0] -= 1 * this.velocity;
-      this.node.style.marginTop = `${this.position[0]}px`;
-    }
+    this.position[1] > -200 && this.move(0, -1);
   }
   down() {
-    if (this.position[0] < 300) {
-      this.position[0] += 1 * this.velocity;
-      this.node.style.marginTop = `${this.position[0]}px`;
-    }
+    this.position[1] < 200 && this.move(0, 1);
   }
   left() {
-    if (this.position[1] > -640) {
-      this.position[1] -= 1 * this.velocity;
-      this.node.style.marginLeft = `${this.position[1]}px`;
-    }
+    this.position[0] > -350 && this.move(-1, 0);
   }
   right() {
-    if (this.position[1] < 640) {
-      this.position[1] += 1 * this.velocity;
-      this.node.style.marginLeft = `${this.position[1]}px`;
-    }
-  }
-  defend() {
-    this.node.className = "player defendido";
-    setTimeout(() => {
-      this.node.className = "player";
-    }, 1700);
-  }
-  attack() {
-    this.node.className = "player atacando";
-    setTimeout(() => {
-      this.node.className = "player";
-    }, 500);
-  }
-  resetPosition() {
-    this.node.style.top = "0px";
-    this.node.style.left = "-420px";
-    this.position = [0, -420];
+    this.position[0] < 350 && this.move(1, 0);
   }
 }
-
 const Bird = new Player();
 
-let down = false;
-
-document.addEventListener(
-  "keydown",
-  (e) => {
-    if (down) return;
-    down = true;
-    gebi(e.key).focus();
-    if (gebi("w") === document.activeElement) {
-      Bird.up();
-    }
-    if (gebi("s") === document.activeElement) {
-      Bird.down();
-    }
-    if (gebi("a") === document.activeElement) {
-      Bird.left();
-    }
-    if (gebi("d") === document.activeElement) {
-      Bird.right();
-    }
-    if (gebi("i") === document.activeElement) {
-      Bird.defend();
-    }
-    if (gebi("l") === document.activeElement) {
-      Bird.attack();
-    }
-  },
-  false
-);
-document.addEventListener(
-  "keyup",
-  (e) => {
-    down = false;
-  },
-  false
-);
+$("body").keydown(({ originalEvent: { key: key } }) => {
+  switch (key) {
+    case "w":
+      return Bird.up();
+    case "s":
+      return Bird.down();
+    case "a":
+      return Bird.left();
+    case "d":
+      return Bird.right();
+    default:
+  }
+});
